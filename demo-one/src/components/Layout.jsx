@@ -19,6 +19,7 @@ function Layout() {
             <li><Link to="/DemoBMI">DemoBMI</Link></li>
             <li><Link to="/ImageGallery">ImageGallery</Link></li>
             <li><Link to="/TodoApp">TodoApp</Link></li>
+            <li><Link to="/HotelBooking">HotelBooking </Link></li>
           </ul>
         </aside>
 

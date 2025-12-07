@@ -8,6 +8,7 @@ import TipCalculator from "./pages/TipCalculator";
 import DemoBMI from "./pages/DemoBMI";
 import ImageGallery from "./pages/ImageGallery";
 import TodoApp from "./pages/TodoApp";
+import HotelBooking from "./pages/HotelBooking";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="DemoBMI" element={<DemoBMI />} />
         <Route path="ImageGallery" element={<ImageGallery />} />
         <Route path="TodoApp" element={<TodoApp />} />
+        <Route path="HotelBooking" element={<HotelBooking />} />
       </Route>
 
     </Routes>
