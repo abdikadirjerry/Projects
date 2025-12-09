@@ -50,7 +50,7 @@ export default function HotelBookingForm() {
 
   return (
     <div style={{ maxWidth: '500px', margin: '2rem auto', padding: '1rem', border: '1px solid #ddd', borderRadius: '8px' }}>
-      <h2>🏨 Hotel Booking Form (Somaliland)</h2>
+      <h2> Hotel Booking Form (Somaliland)</h2>
 
       <form onSubmit={handleSubmit}>
         {/* Name */}

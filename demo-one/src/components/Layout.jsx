@@ -1,26 +1,30 @@
 import { Link, Outlet } from "react-router-dom";
 import "./layout.css";
 
-
 function Layout() {
   return (
     <div className="layout">
 
       <header className="header">
         <h1>Demo-One Project</h1>
+        <div className="header-right">
+          <span className="user-label">Admin</span>
+        </div>
       </header>
 
       <div className="middle-section">
 
         <aside className="sidebar">
-          <ul>
-            <li><Link to="/calculator">calculator</Link></li>
-            <li><Link to="/TipCalculator">TipCalculator</Link></li>
-            <li><Link to="/DemoBMI">DemoBMI</Link></li>
-            <li><Link to="/ImageGallery">ImageGallery</Link></li>
-            <li><Link to="/TodoApp">TodoApp</Link></li>
-            <li><Link to="/HotelBooking">HotelBooking </Link></li>
-          </ul>
+          <nav>
+            <ul>
+              <li><Link to="/layout/calculator">Calculator</Link></li>
+              <li><Link to="/layout/tip">Tip Calculator</Link></li>
+              <li><Link to="/layout/bmi">BMI Calculator</Link></li>
+              <li><Link to="/layout/gallery">Image Gallery</Link></li>
+              <li><Link to="/layout/todo">ToDo App</Link></li>
+              <li><Link to="/layout/hotel">Hotel Booking</Link></li>
+            </ul>
+          </nav>
         </aside>
 
         <main className="content">
