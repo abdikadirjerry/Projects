@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Display from "./Display";
 import ButtonsGrid from "./ButtonsGrid";
 import HistoryPanel from "./HistoryPanel";
+import './calculator.css';
 
 export default function Calculator() {
   const [currentInput, setCurrentInput] = useState("");

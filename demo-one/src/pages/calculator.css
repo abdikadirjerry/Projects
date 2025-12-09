@@ -1,0 +1,65 @@
+/* calculator.css */
+
+.calculator-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Calculator left side */
+.calculator-left {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Display */
+.display {
+  background-color: #f3f4f6;
+  padding: 1rem;
+  font-size: 2rem;
+  text-align: right;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Buttons Grid */
+.buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 60px);
+  gap: 0.5rem;
+}
+.btn {
+  padding: 0.8rem 0;
+  font-size: 1.1rem;
+  background-color: #e5e7eb;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn:hover {
+  background-color: #0ea5a4;
+  color: white;
+}
+
+/* History Panel */
+.history-panel {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.history-panel h3 {
+  margin-bottom: 0.8rem;
+  color: #0ea5a4;
+}
+.history-list div {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 0.9rem;
+}

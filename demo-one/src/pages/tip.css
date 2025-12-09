@@ -1,0 +1,46 @@
+/* tip.css - Tip Calculator */
+
+.container {
+  max-width: 500px;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.container h2, h3 {
+  color: #0ea5a4;
+  margin-bottom: 1rem;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  margin-bottom: 1rem;
+}
+
+.btn button {
+  margin: 0.3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #0ea5a4;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.btn button:hover {
+  background-color: #059e96;
+}
+
+.reset-btn {
+  background-color: #ef4444;
+  margin-top: 1rem;
+}
+.reset-btn:hover {
+  opacity: 0.8;
+}

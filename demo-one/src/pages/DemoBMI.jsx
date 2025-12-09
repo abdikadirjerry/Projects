@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import './bmi.css';
 // import "../DemoBMIStyle.css";
 
 export default function DemoBMI() {
   const [numPersons, setNumPersons] = useState("");
   const [people, setPeople] = useState([]);
 
-  // When user enters number of persons
   const start = (e) => {
     e.preventDefault();
     const n = parseInt(numPersons);
@@ -50,7 +50,6 @@ export default function DemoBMI() {
     <div className="container">
       <h1>BMI Calculator</h1>
 
-      {/* Ask number of persons */}
       {people.length === 0 && (
         <form onSubmit={start} className="form-box">
           <input
@@ -63,7 +62,6 @@ export default function DemoBMI() {
         </form>
       )}
 
-      {/* Person inputs */}
       {people.length > 0 &&
         people.map((person, index) => (
           <div key={index} className="person-box">
@@ -100,14 +98,12 @@ export default function DemoBMI() {
             />
             <button onClick={() => calculate(index)}>Calculate</button>
 
-            {/* Show reset button only if input exists */}
             {(person.fullName || person.height || person.weight || person.bmi) && (
               <button className="reset-btn" onClick={() => reset(index)}>
                 Reset
               </button>
             )}
 
-            {/* Show result */}
             {person.bmi && (
               <div className="result">
                 <p>Name: {person.fullName}</p>

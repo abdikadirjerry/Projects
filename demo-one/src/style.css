@@ -1,362 +1,520 @@
-/* GLOBAL RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+/* ---------- Variables ---------- */
+:root{
+  --bg: #f6f8fb;
+  --surface: #ffffff;
+  --muted: #738099;
+  --text: #0f1724;
+  --primary: #0b5fff;
+  --primary-600: #0847c7;
+  --accent: #00c2a8;
+  --danger: #ff5252;
+  --glass: rgba(255,255,255,0.7);
+  --soft: rgba(11,95,255,0.06);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow-1: 0 6px 20px rgba(15,23,42,0.06);
+  --shadow-2: 0 10px 30px rgba(15,23,42,0.08);
+  --transition: 220ms cubic-bezier(.2,.9,.3,1);
+  --max-width: 1180px;
+  --gutter: 18px;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono";
 }
 
-body {
-  background: #eef1f7;
-  color: #333;
+/* ---------- Base reset ---------- */
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  background: linear-gradient(180deg,var(--bg), #ffffff);
+  color:var(--text);
+  font-size:15px;
+  line-height:1.45;
+  padding:20px;
 }
 
-/* LAYOUT */
-.layout {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.header {
-  padding: 15px;
-  background: linear-gradient(to right, #4b7bec, #3867d6);
-  color: white;
-  text-align: center;
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-.middle-section {
-  flex: 1;
-  display: flex;
-}
-
-/* SIDEBAR */
-.sidebar {
-  width: 230px;
-  background: #fff;
-  padding: 20px;
-  border-right: 1px solid #e0e0e0;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
-}
-
-.sidebar ul {
-  list-style: none;
-}
-
-.sidebar li {
-  margin-bottom: 15px;
-}
-
-.sidebar a {
-  text-decoration: none;
-  font-size: 17px;
-  font-weight: 500;
-  color: #2d3436;
-  padding: 10px 12px;
-  display: block;
-  border-radius: 8px;
-  transition: 0.3s ease;
-}
-
-.sidebar a:hover {
-  background: #4b7bec;
-  color: white;
-  padding-left: 20px;
-}
-
-/* CONTENT */
-.content {
-  flex: 1;
-  padding: 25px;
-  background: #f7f9fc;
-}
-
-/* FOOTER */
-.footer {
-  background: #718093;
-  color: white;
-  padding: 12px;
-  font-size: 14px;
-  text-align: center;
-  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.2);
-}
-
-/* ====================================================== */
-/* ======================= CALCULATOR ==================== */
-/* ====================================================== */
-.app {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.calculator-container {
-  display: flex;
-  padding: 20px;
-  border-radius: 18px;
-  background: white;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.calculator-left {
-  margin-right: 25px;
-}
-
-.display {
-  height: 60px;
-  background: #f0f3f7;
-  border-radius: 12px;
-  padding: 10px;
-  font-size: 28px;
-  text-align: right;
-  border: none;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-}
-
-.buttons-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 70px);
-  grid-gap: 10px;
-}
-
-.btn {
-  height: 50px;
-  border: none;
-  background: #4b7bec;
-  color: white;
-  border-radius: 10px;
-  font-size: 20px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.btn:hover {
-  background: #3867d6;
-  transform: translateY(-3px);
-}
-
-/* History Panel */
-.history-panel {
-  width: 220px;
-  background: #f5f6fa;
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.1);
-}
-
-.history-list {
-  max-height: 350px;
-  overflow-y: auto;
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 2px solid #ddd;
-}
-
-/* ====================================================== */
-/* ==================== TIP CALCULATOR ================== */
-/* ====================================================== */
+/* Utility container */
 .container {
-  width: 380px;
-  margin: 50px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 18px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  text-align: center;
-}
-
-.container h2 {
-  margin-bottom: 20px;
-  font-size: 22px;
-  color: #2d3436;
-}
-
-.input-container input {
-  width: 90%;
+  width: calc(100% - 48px);
+  max-width: var(--max-width);
+  margin: 0 auto;
   padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  outline: none;
-  transition: border 0.3s ease;
 }
 
-.input-container input:focus {
-  border-color: #4b7bec;
+/* small utilities */
+.hidden { display:none !important; }
+.kicker { color:var(--muted); font-size:13px; }
+.row { display:flex; gap:12px; align-items:center; }
+.col { display:flex; flex-direction:column; gap:12px; }
+
+/* ---------- Links ---------- */
+a { color:inherit; text-decoration:none; }
+a:hover { color:var(--primary); text-decoration:underline; }
+
+/* ---------- Card ---------- */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  border: 1px solid rgba(15,23,42,0.04);
+  padding: 14px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow-2) }
+
+/* ===============================
+   Layout (layout.jsx) & Header
+   =============================== */
+.layout {
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  gap:18px;
+  max-width:1300px;
+  margin:0 auto;
 }
 
-.btn button {
-  padding: 10px 25px;
-  margin: 7px;
-  border: none;
-  border-radius: 10px;
-  background: #4b7bec;
+/* Header */
+.header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 18px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6));
+  border-radius: 14px;
+  border: 1px solid rgba(15,23,42,0.03);
+  box-shadow: var(--shadow-1);
+}
+.header h1 {
+  margin:0;
+  font-size:18px;
+  color:var(--primary);
+  font-weight:700;
+  letter-spacing:0.2px;
+}
+.header-right { display:flex; gap:12px; align-items:center; }
+
+/* user badge */
+.user-label{
+  padding:6px 10px;
+  border-radius:999px;
+  background: linear-gradient(180deg,var(--primary), var(--primary-600));
+  color:white;
+  font-weight:600;
+  font-size:13px;
+  box-shadow: 0 10px 28px rgba(11,95,255,0.12);
+}
+
+/* ===============================
+   Middle section: sidebar + main
+   =============================== */
+.middle-section{
+  display:grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--gutter);
+  align-items:start;
+}
+
+/* Sidebar */
+.sidebar{
+  position:relative;
+  padding:14px;
+  border-radius:12px;
+  background: linear-gradient(180deg,var(--surface), rgba(11,95,255,0.02));
+  border: 1px solid rgba(15,23,42,0.03);
+  box-shadow: var(--shadow-1);
+  height:fit-content;
+}
+.sidebar nav ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.sidebar nav li a{
+  display:block;
+  padding:10px 12px;
+  border-radius:8px;
+  color:var(--text);
+  font-weight:600;
+  transition:all var(--transition);
+  font-size:14px;
+}
+.sidebar nav li a:hover{
+  transform:translateX(6px);
+  color:var(--primary);
+  background: rgba(11,95,255,0.04);
+}
+
+/* highlight active (react-router may add active class) */
+.sidebar .active, .sidebar a.active {
+  background: linear-gradient(90deg, rgba(11,95,255,0.12), rgba(0,194,168,0.02));
+  color:var(--primary);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+/* Content area */
+.content {
+  min-height:60vh;
+  padding: 4px;
+}
+
+/* Footer */
+.footer {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px;
+  border-radius:10px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* ===============================
+   Calculator
+   =============================== */
+.calculator-container {
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  width:100%;
+}
+
+/* left: display + buttons */
+.calculator-left {
+  flex:1;
+  min-width: 300px;
+  background: linear-gradient(180deg, var(--surface), rgba(255,255,255,0.6));
+  border-radius:12px;
+  padding:14px;
+  border: 1px solid rgba(15,23,42,0.03);
+  box-shadow: var(--shadow-1);
+}
+
+/* Display */
+.display {
+  height:78px;
+  background: linear-gradient(180deg, rgba(11,95,255,0.03), transparent);
+  border-radius:10px;
+  padding:14px;
+  font-size:28px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  color:var(--text);
+  margin-bottom:12px;
+  letter-spacing:0.6px;
+  overflow:hidden;
+  word-break:break-all;
+}
+
+/* Buttons grid */
+.buttons-grid {
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:12px;
+}
+.btn {
+  padding:14px 10px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  font-weight:700;
+  font-size:16px;
+  transition:transform var(--transition), box-shadow var(--transition), background var(--transition);
+  background: linear-gradient(180deg, #ffffff, rgba(11,95,255,0.02));
+  box-shadow: var(--shadow-1);
+  color:var(--text);
+}
+.btn:hover { transform: translateY(-4px); box-shadow: var(--shadow-2) }
+.btn:active { transform: translateY(0) scale(.995) }
+
+/* operator buttons (add className "operator" in code if desired) */
+.btn.operator {
+  background: linear-gradient(180deg, var(--primary), var(--primary-600));
   color: white;
-  cursor: pointer;
-  transition: 0.3s;
+  box-shadow: 0 10px 26px rgba(11,95,255,0.12);
 }
 
-.btn button:hover {
-  background: #3867d6;
-}
-
-.reset-btn {
-  background: #e84118 !important;
-}
-
-.reset-btn:hover {
-  background: #c23616 !important;
-}
-
-/* ====================================================== */
-/* ========================= BMI ========================= */
-/* ====================================================== */
-.form-box {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.form-box input {
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-.form-box button {
-  background: #4b7bec;
-  padding: 12px;
+/* equals: make it taller and stand out */
+.btn.equals {
+  grid-column: span 2;
+  background: linear-gradient(180deg, var(--accent), #00a58f);
   color: white;
-  border-radius: 8px;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
+  font-size:17px;
 }
 
+/* History panel */
+.history-panel {
+  width:320px;
+  background: linear-gradient(180deg, var(--surface), rgba(11,95,255,0.02));
+  border-radius:12px;
+  padding:12px;
+  border: 1px solid rgba(15,23,42,0.03);
+  box-shadow: var(--shadow-1);
+}
+.history-panel h3 { margin:0 0 8px 0; font-size:15px; color:var(--muted) }
+.history-list { max-height:420px; overflow:auto; display:flex; flex-direction:column; gap:8px; padding-right:6px }
+.history-list > div {
+  font-size:13px;
+  padding:8px;
+  border-radius:8px;
+  background: rgba(11,95,255,0.02);
+  color:var(--text);
+}
+
+/* ===============================
+   BMI Calculator
+   =============================== */
+.container .form-box {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-bottom:14px;
+}
+.form-box input[type="number"]{
+  padding:10px;
+  border-radius:10px;
+  border:1px solid rgba(15,23,42,0.06);
+  width:200px;
+  font-size:14px;
+}
+.form-box button{
+  padding:10px 14px;
+  border-radius:10px;
+  border:none;
+  background:var(--primary);
+  color:white;
+  cursor:pointer;
+  transition: all var(--transition);
+}
 .person-box {
-  background: white;
-  padding: 20px;
-  border-left: 5px solid #4b7bec;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+  margin-bottom:16px;
+  padding:12px;
+  border-radius:12px;
+  background: linear-gradient(180deg,var(--surface), rgba(11,95,255,0.02));
+  border: 1px solid rgba(15,23,42,0.03);
+}
+.person-box h3{ margin:0 0 8px 0; font-size:16px }
+.person-box input{
+  display:block;
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border-radius:10px;
+  border:1px solid rgba(15,23,42,0.06);
+}
+.person-box .reset-btn{
+  margin-left:8px;
+  background: transparent;
+  border:1px solid rgba(15,23,42,0.06);
+  padding:8px 10px;
+  border-radius:8px;
+  cursor:pointer;
 }
 
-.person-box button {
-  background: #20bf6b;
+/* result */
+.result {
+  margin-top:10px;
+  padding:10px;
+  border-radius:8px;
+  background: linear-gradient(90deg, rgba(0,194,168,0.06), rgba(11,95,255,0.03));
+  color:var(--text);
 }
 
-.person-box button:hover {
-  background: #0fb74c;
+/* ===============================
+   Image Gallery
+   =============================== */
+.gallery-container{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:center;
+}
+.gallery-card{
+  width:100%;
+  max-width:760px;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:var(--shadow-2);
+  border: 1px solid rgba(15,23,42,0.04);
+  padding:18px;
+  background:var(--surface);
+}
+.gallery-img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  border-radius:8px;
+  display:block;
+  margin-bottom:12px;
+}
+.gallery-buttons{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  margin-top:8px;
+}
+.gallery-buttons button{
+  padding:8px 14px;
+  border-radius:10px;
+  border:none;
+  background:var(--primary);
+  color:white;
+  cursor:pointer;
+  transition: var(--transition);
+}
+.gallery-counter{ color:var(--muted); text-align:center; margin-top:8px }
+
+/* ===============================
+   Login
+   =============================== */
+.login-container{
+  min-height:60vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.login-box{
+  width:360px;
+  padding:22px;
+  border-radius:12px;
+  background: linear-gradient(180deg,var(--surface), rgba(11,95,255,0.02));
+  border: 1px solid rgba(15,23,42,0.03);
+  box-shadow: var(--shadow-2);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.login-title{ text-align:center; margin:6px 0 6px 0; font-size:20px; color:var(--primary) }
+.input{
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid rgba(15,23,42,0.06);
+  font-size:15px;
+}
+.login-box .btn{ width:100%; padding:12px; }
+
+/* ===============================
+   Tip Calculator & Booking Form
+   =============================== */
+.input-container input[type="number"], input[type="text"], select, textarea{
+  padding:10px;
+  border-radius:10px;
+  border:1px solid rgba(15,23,42,0.06);
+  width:100%;
+  box-sizing:border-box;
+}
+.btn-group { display:flex; gap:10px; margin:12px 0 }
+.reset-btn{
+  background:transparent;
+  border:1px solid rgba(15,23,42,0.06);
+  padding:8px 10px;
+  border-radius:8px;
+  cursor:pointer;
 }
 
-.person-box .reset-btn {
-  background: #e84118;
+/* booking inline polish */
+.booking-box{
+  max-width:520px;
+  margin:0 auto;
+  padding:16px;
+  border-radius:12px;
+  background:var(--surface);
+  border: 1px solid rgba(15,23,42,0.03);
+  box-shadow: var(--shadow-1);
 }
 
-.person-box .reset-btn:hover {
-  background: #c23616;
+/* ===============================
+   Todo App
+   =============================== */
+.todo-container{
+  background: linear-gradient(180deg,var(--surface), rgba(11,95,255,0.01));
+  padding:14px;
+  border-radius:12px;
+  border: 1px solid rgba(15,23,42,0.03);
+}
+.todo-inputs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+.todo-inputs input, .todo-inputs button{
+  padding:10px;
+  border-radius:8px;
+  border:1px solid rgba(15,23,42,0.06);
+}
+.todo-inputs button{
+  border:none;
+  background:var(--primary);
+  color:white;
+  cursor:pointer;
+}
+.todo-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px }
+.todo-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px;
+  border-radius:10px;
+  background: linear-gradient(180deg, rgba(11,95,255,0.02), transparent);
+  border: 1px solid rgba(15,23,42,0.03);
+}
+.delete-btn{
+  background:transparent;
+  border:1px solid rgba(255,77,79,0.12);
+  color:var(--danger);
+  padding:8px 10px;
+  border-radius:8px;
+  cursor:pointer;
 }
 
-/* ====================================================== */
-/* ================= IMAGE GALLERY ======================= */
-/* ====================================================== */
-.gallery-container {
-  text-align: center;
-  margin-top: 20px;
+/* ===============================
+   Focus/accessibility states
+   =============================== */
+input:focus, textarea:focus, select:focus, .btn:focus, .input:focus{
+  outline:none;
+  box-shadow: 0 8px 28px rgba(11,95,255,0.09);
+  border-color: rgba(11,95,255,0.2);
+  transform: translateY(-1px);
 }
 
-.gallery-card {
-  max-width: 850px;
-  background: white;
-  margin: auto;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+/* ===============================
+   Responsive rules
+   =============================== */
+@media (max-width: 1000px){
+  .middle-section { grid-template-columns: 1fr; }
+  .sidebar { order: 2; display:flex; gap:8px; overflow:auto; }
+  .content { order: 1; }
+  .history-panel { width:100%; order:3; }
+  .gallery-img { height:320px; }
+  .calculator-container { flex-direction:column; }
+  .buttons-grid { grid-template-columns: repeat(4, 1fr); }
+  .btn.equals { grid-column: auto; }
+  .login-box { width:100%; padding:16px; }
 }
 
-.gallery-img {
-  width: 100%;
-  height: 450px;
-  border-radius: 15px;
-  object-fit: cover;
+@media (max-width: 520px){
+  body { padding:10px }
+  .header h1 { font-size:16px }
+  .display { font-size:20px; height:64px }
+  .btn { padding:12px 8px; font-size:15px }
+  .gallery-img { height:220px }
+  .todo-inputs { flex-direction:column }
+  .sidebar nav ul { flex-direction:row; gap:10px; overflow:auto; padding-bottom:8px; }
+  .sidebar { padding:10px; border-radius:10px; }
 }
 
-.gallery-buttons button {
-  background: #4b7bec;
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  margin: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.gallery-buttons button:hover {
-  background: #3867d6;
-}
-
-.gallery-buttons button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
-
-/* ====================================================== */
-/* ======================= TODO APP ====================== */
-/* ====================================================== */
-.todo-container {
-  width: 480px;
-  background: white;
-  padding: 25px;
-  margin: 40px auto;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.todo-inputs input {
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-.todo-inputs button {
-  background: #4b7bec;
-  border: none;
-  padding: 12px;
-  color: white;
-  border-radius: 8px;
-  font-size: 17px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.todo-inputs button:hover {
-  background: #3867d6;
-}
-
-.todo-item {
-  background: #f1f3f6;
-  padding: 12px;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.delete-btn {
-  background: #e84118;
-  padding: 8px 14px;
-  border-radius: 8px;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.delete-btn:hover {
-  background: #c23616;
+/* Print */
+/* reduce visuals for printing */
+@media print {
+  .header, .footer, .sidebar, .history-panel { display:none; }
+  .content { padding:0; box-shadow:none; border:none; }
 }

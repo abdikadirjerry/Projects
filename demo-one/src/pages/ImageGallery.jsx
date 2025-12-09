@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import img1 from "../assets/Images/pic1.jpg";
 import img2 from "../assets/Images/pic2.jpg";
 import img3 from "../assets/Images/pic3.jpg";
+import './gallery.css';
 
 function ImageGallery() {
   const slides = [
